@@ -1,28 +1,18 @@
 package it.software.inside.Service;
-
-
 import it.software.inside.Models.Consegna;
-import it.software.inside.Repo.ConsegnaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ConsegnaService {
+public interface ConsegnaService {
+    // Save operation
+    Consegna saveConsegna (Consegna consegna);
 
-    @Autowired
-    ConsegnaRepository repository;
+    // Read operation
+    List<Consegna> fetchOrdiniList();
 
-    public boolean addDelivery(Consegna consegna) {
-        repository.save(consegna);
-        return true;
-    }
+    // Update operation
+    Consegna updateConsegna(Consegna consegna, int id);
 
-    public List<Consegna> getAll() {
-        return repository.findAll();
-    }
-
-
-
+    // Delete operation
+    void deleteConsegnaById(int id);
 }
