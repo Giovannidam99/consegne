@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class ConsegnaServiceImpl {
+public class ConsegnaServiceImpl
+    implements ConsegnaService {
 
     @Autowired
     ConsegnaRepository repository;
@@ -25,50 +26,50 @@ public class ConsegnaServiceImpl {
     }
 
     @Override
+    public Consegna saveConsegna(Consegna consegna) {
+        return null;
+    }
+
+    @Override
+    public List<Consegna> fetchOrdiniList() {
+        return null;
+    }
+
+    @Override
     public Consegna updateConsegna(Consegna consegna, int id) {
 
         Consegna depDB
                 = repository.findById(id).get();
 
-        if (Objects.nonNull(Consegna.getDestinazione())
+        if (Objects.nonNull(consegna.getDestinazione())
                 && !"".equalsIgnoreCase(
-                consegna.getNome())) {
-            depDB.setNome(
-                    ordini.getNome());
+                consegna.getDestinazione())) {
+            depDB.setDestinazione(
+                    consegna.getDestinazione());
         }
 
         if (Objects.nonNull(
-                ordini.getCognome())
+                consegna.getMittente())
                 && !"".equalsIgnoreCase(
-                ordini.getCognome())) {
-            depDB.setCognome(
-                    ordini.getCognome());
+                consegna.getMittente())) {
+            depDB.setMittente(
+                    consegna.getMittente());
+
         }
 
-        if (Objects.nonNull(ordini.getProdotto())
-                && !"".equalsIgnoreCase(
-                ordini.getProdotto())) {
-            depDB.setProdotto(
-                    ordini.getProdotto());
-        }
-        if (Objects.nonNull(ordini.getMarca())
-                && !"".equalsIgnoreCase(
-                ordini.getMarca())) {
-            depDB.setMarca(
-                    ordini.getMarca());
-        }
 
-        return ordiniRepository.save(depDB);
+        return repository.save(depDB);
     }
 
 
     // Delete operation
     @Override
-    public void deleteOrdiniById(int id) {
-        ordiniRepository.deleteById(id);
+    public void deleteConsegnaById(int id) {
+        repository.deleteById(id);
     }
 }
 
 
 
-}
+
+

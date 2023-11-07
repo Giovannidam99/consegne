@@ -20,8 +20,29 @@ public class Consegna {
 
     private String destinazione;
     private String mittente;
-    private Double peso;
+    private int peso;
 
+    public String getDestinazione() {
+        return destinazione;
+    }
 
+    public void setDestinazione(String destinazione) {
+        this.destinazione = destinazione;
+    }
 
+    public String getMittente() {
+        return mittente;
+    }
+
+    public void setMittente(String mittente) {
+        this.mittente = mittente;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
 }
