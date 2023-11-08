@@ -43,6 +43,7 @@ public class Consegna {
     }
 
     public void setPeso(int peso) {
+
         this.peso = peso;
     }
 }

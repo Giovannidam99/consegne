@@ -8,7 +8,7 @@ public interface ConsegnaService {
     Consegna saveConsegna (Consegna consegna);
 
     // Read operation
-    List<Consegna> fetchOrdiniList();
+    List<Consegna> fetchConsegnaList();
 
     // Update operation
     Consegna updateConsegna(Consegna consegna, int id);

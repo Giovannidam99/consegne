@@ -13,15 +13,16 @@ public class ConsegnaController {
     private ConsegnaService consegnaService;
 
     @PostMapping("/consegne")
-    public boolean addDelivery(@RequestBody Consegna consegna) {
+    public Consegna addDelivery(@RequestBody Consegna consegna) {
+
 
         return consegnaService.saveConsegna(consegna);
     }
 
     @GetMapping("/consegne/getAll")
-    public Iterable<Consegna> getAll() {
+    public List<Consegna> getAll() {
 
-        return service.getAll();
+        return consegnaService.fetchConsegnaList();
     }
 
     // Update operation
@@ -31,7 +32,7 @@ public class ConsegnaController {
     }
 
     // Delete operation
-    @DeleteMapping("/ordini/{id}")
+    @DeleteMapping("/consegne/{id}")
     public String deleteconsegnaById(@PathVariable("id") int id) {
         consegnaService.deleteConsegnaById(id);
         return "Deleted Successfully";

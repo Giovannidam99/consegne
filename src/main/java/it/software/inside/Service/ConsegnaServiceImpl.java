@@ -1,7 +1,7 @@
 package it.software.inside.Service;
 
 import it.software.inside.Models.Consegna;
-import it.software.inside.Repo.ConsegnaRepository;
+import it.software.inside.Repository.ConsegnaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +15,8 @@ public class ConsegnaServiceImpl
     @Autowired
     ConsegnaRepository repository;
 
-    public boolean addDelivery(Consegna consegna) {
-        repository.save(consegna);
-        return true;
+    public Consegna addDelivery(Consegna consegna) {
+        return repository.save(consegna);
     }
 
     public Iterable<Consegna> getAll() {
@@ -27,12 +26,14 @@ public class ConsegnaServiceImpl
 
     @Override
     public Consegna saveConsegna(Consegna consegna) {
-        return null;
+        return repository.save(consegna);
     }
 
     @Override
-    public List<Consegna> fetchOrdiniList() {
-        return null;
+    public List<Consegna> fetchConsegnaList() {
+
+        return (List<Consegna>)
+                repository.findAll();
     }
 
     @Override
@@ -57,6 +58,9 @@ public class ConsegnaServiceImpl
 
         }
 
+        if (Objects.nonNull(consegna.getPeso() == 0)) {
+            depDB.setPeso(consegna.getPeso());
+        }
 
         return repository.save(depDB);
     }
