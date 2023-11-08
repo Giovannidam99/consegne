@@ -8,31 +8,33 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
+@RequestMapping("/consegne")
 public class ConsegnaController {
+
     @Autowired
     private ConsegnaService consegnaService;
 
-    @PostMapping("/consegne")
+    @PostMapping
     public Consegna addDelivery(@RequestBody Consegna consegna) {
 
 
         return consegnaService.saveConsegna(consegna);
     }
 
-    @GetMapping("/consegne/getAll")
+    @GetMapping("/getAll")
     public List<Consegna> getAll() {
 
         return consegnaService.fetchConsegnaList();
     }
 
     // Update operation
-    @PutMapping("/consegne/{id}")
+    @PutMapping("{id}")
     public Consegna updateConsegne(@RequestBody Consegna consegne, @PathVariable("id") int id) {
         return consegnaService.updateConsegna (consegne,id);
     }
 
     // Delete operation
-    @DeleteMapping("/consegne/{id}")
+    @DeleteMapping("{id}")
     public String deleteconsegnaById(@PathVariable("id") int id) {
         consegnaService.deleteConsegnaById(id);
         return "Deleted Successfully";
