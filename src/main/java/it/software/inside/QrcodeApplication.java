@@ -1,13 +1,13 @@
-package com.example.esercizio;
+package it.software.inside;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EsercizioApplication {
+public class QrcodeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EsercizioApplication.class, args);
+		SpringApplication.run(QrcodeApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package qrcodegenerator;
+package it.software.inside;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
-public class qrcodegenerator {
+public class QrcodeGenerator {
 
     public static void generateQRCodeImage(String text, int width, int height, String filePath)
             throws WriterException, IOException {
