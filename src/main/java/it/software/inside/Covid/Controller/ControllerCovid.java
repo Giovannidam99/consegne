@@ -1,30 +1,28 @@
-package it.software.inside.controller;
+package it.software.inside.Covid.Controller;
 
-import it.software.inside.pojo.GitHubRepoInfo;
-import it.software.inside.service.CovidService;
+import it.software.inside.Service.CovidService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.ResponseEntity;
-import it.software.inside.configuration.AppConfiguration;
-import java.io.IOException;
-import it.software.inside.pojo.Payload;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.List;
 
-@RestController
+@Controller
+@RequestMapping("/")
 public class ControllerCovid {
-    @Autowired
-    CovidService covidService;
-    @Autowired
-    AppConfiguration appConfiguration;
 
-    @GetMapping
-    public ResponseEntity<Payload> getCovidData() {
-        return covidService.covidRestTemplate();
-        public Object getCovidData()  {
-            return covidService.covidDataConverter();
+    private final CovidService covidservice;
 
-        }
+    @Autowired
+    public ControllerCovid(CovidService covidservice) {
+        this.covidservice = covidservice;
+    }
+
+    @GetMapping("/")
+    @ResponseBody
+    public List<Object> getCovid() {
+        return covidservice.getCovid();
     }
 }
